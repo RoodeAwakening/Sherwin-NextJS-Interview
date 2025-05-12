@@ -2,8 +2,16 @@
 import fetchData from "@/lib/fetchData";
 import { useState } from "react";
 
+interface CountryData {
+    name: {
+        common: string;
+        official: string;
+    };
+    region: string;
+}
+
 function Canada() {
-    const [results, setResults] = useState(null);
+    const [results, setResults] = useState<CountryData[] | null>(null);
     const getCanadaData = async () => {
         const canadaUrl = "https://restcountries.com/v3.1/name/Canada?fullText=true";
         const data = await fetchData(canadaUrl);
